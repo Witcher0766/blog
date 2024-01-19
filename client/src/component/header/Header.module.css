@@ -1,0 +1,22 @@
+header {
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 50px;
+    font-size: 20px;
+}
+
+
+header a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header a.logo {
+    font-weight: bold;
+}
+header nav {
+    display: flex;
+    gap: 1rem;
+}
