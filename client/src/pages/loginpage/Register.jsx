@@ -10,20 +10,26 @@ const Register = () => {
   const [password, setPassword] = useState('');
 
 
-async function register(e) {
-  e.preventDefault();
-  const response = await fetch('http://localhost:4000/register', {
-    method: 'POST',
-    body: JSON.stringify({username, password}),
-    headers: {'Content-Type': 'application/json'},
-  });
-  if(response.status === 200) {
-    alert("registration successful");
+  async function register(e) {
+    try {
+      e.preventDefault();
+      const response = await fetch('http://localhost:4000/register', {
+        method: 'POST',
+        body: JSON.stringify({ username, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      if (response.status === 200) {
+        alert("Registration successful");
+      } else {
+        alert("Registration failed");
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      alert("Registration failed. Please try again later.");
+    }
   }
-  else {
-    alert("registration failed");
-  }
-}
+  
 
   return (
     <section className={`container ${styles.auth}`}>
@@ -32,10 +38,9 @@ async function register(e) {
         <h2>Register</h2>
         <form onSubmit={register}>
           <input
-            type="email"
-            placeholder="Email"
+            type="text"
+            placeholder="username"
             required
-            name='email'
             value={username}
             onChange={e => setUsername(e.target.value)}
           />
@@ -43,11 +48,10 @@ async function register(e) {
             type="password"
             placeholder="Password"
             required
-            name="password"
             value={password}
             onChange={e => setPassword(e.target.value)}
           />
-          <button className="btn" type="submit">
+          <button className="btn">
             Register
           </button>
         </form>
