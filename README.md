@@ -1,4 +1,4 @@
--> Download node_modules for running in this project using command :-   
+-> Download node_modules for running the project using command line :-   
 -> npm i
 
 -> switch to client folder using cd [./client] in command line to run frontend :-
