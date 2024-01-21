@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieparser = require('cookie-parser');
+const PORT = process.env.PORT || 4000;
 
 const salt = bcrypt.genSaltSync(10);
 const secret = 'axcjkasfjkhkhkjhjgjsfdk';
@@ -80,7 +81,9 @@ app.post('/logout', (req, res) => {
 });
 
 
-app.listen(4000);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
 
 
 // FDagOgVkEAFX2d5A

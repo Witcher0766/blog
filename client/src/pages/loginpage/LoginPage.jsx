@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import styles from './LoginPage.module.css'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Card from '../../component/card/Card'
 import loginImg from "../../assets/login.gif";
 import { UserContext } from '../../context/UserContext';
@@ -9,8 +9,9 @@ import { UserContext } from '../../context/UserContext';
 const LoginPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [redirect, setRedirect] = useState(false);
   const {setUserInfo} = useContext(UserContext);
+  let navigate = useNavigate();
+
 
   async function login(e) {
     try {
@@ -24,7 +25,7 @@ const LoginPage = () => {
       if (response.status === 200) {
         response.json().then(userInfo => {
           setUserInfo(userInfo);
-        setRedirect(true);
+          navigate("/");
         })
       } else {
         alert("login failed");
@@ -33,10 +34,6 @@ const LoginPage = () => {
       console.log("Error during login",error);
       alert("login failed..!! Please try again later");
     }
-  }
-
-  if(redirect) {
-    return <Navigate to={'/'}/>
   }
 
   return (

@@ -20,6 +20,7 @@ main {
 
 
 
+
 .btn {
     width: 100%;
     padding: 10px 5px 10px 5px;
@@ -33,4 +34,19 @@ main {
 .btn:hover {
     background-color: #433f3f;
     color: whitesmoke;
+}
+
+.btn-1 {
+    width: 100%;
+    padding: 5px 10px 5px 10px;
+    border: none;
+    background-color: rgba(7, 112, 250, 0.92);
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+    color: white;
+}
+
+.btn-1:hover {
+    background-color: #d01818c8;
 }
