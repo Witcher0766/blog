@@ -37,10 +37,9 @@ main {
 }
 
 .btn-1 {
-    width: 100%;
-    padding: 5px 10px 5px 10px;
+    padding: 8px 10px 8px 10px;
     border: none;
-    background-color: rgba(7, 112, 250, 0.92);
+    background-color: #e74c3c;
     cursor: pointer;
     transition: all 0.3s;
     border-radius: 5px;
@@ -48,5 +47,5 @@ main {
 }
 
 .btn-1:hover {
-    background-color: #d01818c8;
+    background-color: #c0392b;
 }

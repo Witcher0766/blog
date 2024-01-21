@@ -19,5 +19,58 @@ header a.logo {
 }
 header nav {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+    /* border: 2px solid green; */
+    align-items: center;
+    /* padding: 5px; */
+}
+header nav p {
+    font-weight: 800;
+    background-color: #95a5a6;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+}
+
+.link-btn {
+    padding: 5px 10px 5px 10px;
+    border: none;
+    background-color: #1abc9c;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+    color: white;
+}
+.link-btn:hover {
+    background-color: #16a085;
+}
+
+.log-btn {
+    /* border: 2px solid grey; */
+    padding: 5px 10px 5px 10px;
+    border: none;
+    background-color: #1abc9c;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+    color: white;
+}
+
+.log-btn:hover {
+    background-color: #16a085;
+}
+.log-btn1 {
+    /* border: 2px solid grey; */
+    padding: 5px 10px 5px 10px;
+    border: none;
+    background-color: #3498db;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 5px;
+    color: white;
+}
+
+.log-btn1:hover {
+    background-color: #2980b9;
 }

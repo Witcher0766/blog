@@ -37,9 +37,10 @@ const Header = () => {
   }
 
     let username = userInfo?.username;
-    let box = username;
-    let [name, domain] = (box || '').split('@');
-    const capitalizedName = name ? name.charAt(0).toUpperCase() + name.slice(1) : '';
+    // let box = username;
+    // let [name, domain] = (box || '').split('@');
+    // const capitalizedName = name ? name.charAt(0).toUpperCase() + name.slice(1) : '';
+    let firstLetter = username ? username.charAt(0).toUpperCase() : '';
 
 
   return (
@@ -49,14 +50,15 @@ const Header = () => {
         <nav>
         {username && (
           <>
-            <Link to="/create">{capitalizedName}</Link>
+            <Link className={styles["link-btn"]} to="/create">Create</Link>
             <button className='btn-1' onClick={logout}>Logout</button>
+            <p to="/create">{firstLetter}</p>
           </>
         )}
         {!username && (
           <>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <Link className={styles["log-btn"]} to="/login">Login</Link>
+          <Link className={styles["log-btn1"]} to="/register">Register</Link>
           </>
         )}
         </nav>

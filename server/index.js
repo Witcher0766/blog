@@ -1,12 +1,16 @@
 const express = require('express');
 const cors = require('cors');
 const User = require('./models/User');
+const Post = require('./models/Post');
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieparser = require('cookie-parser');
+const multer  = require('multer')
+const fs = require('fs');
 const PORT = process.env.PORT || 4000;
 
+const uploadMiddleware = multer({ dest: 'uploads/' })
 const salt = bcrypt.genSaltSync(10);
 const secret = 'axcjkasfjkhkhkjhjgjsfdk';
 const app = express();
@@ -79,6 +83,32 @@ app.post('/logout', (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
+    const {originalname, path} = req.file;
+    const parts = originalname.split('.');
+    const ext = parts[parts.length - 1];
+    const newPath = path+'.'+ext
+    fs.renameSync(path, newPath);
+
+    const {token} = req.cookies;
+    jwt.verify(token, secret, {}, async (err, info) => {
+        if (err) res.status(401).json({ error: 'Unauthorized' });
+            const {title,summary,content} = req.body;
+            const postDoc = await Post.create({
+                title,
+                summary,
+                content,
+                cover:newPath,
+                author:info.id,
+            })
+            res.json(postDoc);
+    });
+})
+
+app.get('/post', async (req, res) => {
+    res.json(await Post.find());
+})
 
 
 app.listen(PORT, () => {
