@@ -34,7 +34,7 @@ const IndexPage = () => {
 
   return (
     <>
-      {posts.length > 0 && posts.map(post => (
+      {posts.map(post => (
         <Post key={post._id} {...post} />
       ))}
     </>
