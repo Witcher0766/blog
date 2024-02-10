@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import styles from './Editpost.module.css';
 import ReactQuill from 'react-quill';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Button from '@mui/material/Button';
+
 
 const Editpost = () => {
 
@@ -41,8 +45,10 @@ const Editpost = () => {
 
             if (response.ok) {
               navigate(`/post/${id}`);
+              toast.success("post is edited")
           } else {
-              console.error('Failed to update post:', response.status, response.statusText);
+            toast.error("Failed to edit post:")
+              // console.error('Failed to update post:', response.status, response.statusText);
           }
 
   }
@@ -75,6 +81,7 @@ const Editpost = () => {
             onChange={setContent} 
             />
             <button className='btn'>Update post</button>
+            {/* <Button variant="contained" color="success">Update post</Button> */}
         </form>
         </div>
     </>

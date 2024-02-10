@@ -3,6 +3,9 @@ import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import styles from './Create.module.css';
 import { useNavigate } from 'react-router-dom';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Button from '@mui/material/Button';
 
 const Create = () => {
     const navigate = useNavigate();
@@ -32,8 +35,10 @@ const Create = () => {
             });
             if (response.ok) {
                 navigate('/');
+                toast.success("Post created");
             } else {
-                console.error('Failed to create post:', response.status, response.statusText);
+                toast.error("Failed to create post");
+                // console.error('Failed to create post:', response.status, response.statusText);
             }
         } catch (error) {
             console.error('Error during fetch:', error.message);
@@ -68,6 +73,7 @@ const Create = () => {
             onChange={setContent} 
             />
             <button className='btn'>Create post</button>
+            {/* <Button variant="contained">Create post</Button> */}
         </form>
         </div>
     </>

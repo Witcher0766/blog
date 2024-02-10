@@ -3,6 +3,8 @@ import { Link, useParams } from 'react-router-dom'
 import styles from './Postpage.module.css';
 import {formatISO9075} from "date-fns";
 import { UserContext } from '../../context/UserContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
 
 const Postpage = () => {
   const {id} = useParams();
@@ -17,10 +19,6 @@ const Postpage = () => {
     })
   }, []);
 
-  console.log(postInfo);
-
-  // const [_id, author, content, cover, createdAt, summary, title, updateAt] = postInfo;
-
   if(!postInfo) return '';
   return (
     <div className={styles["main-container"]}>
@@ -31,7 +29,7 @@ const Postpage = () => {
     </div>
     {userInfo.id === postInfo.author._id && (
       <div className={styles["edit-post"]}> 
-      <Link to={`/edit/${postInfo._id}`} className={styles["edit-btn"]} >Edit</Link>
+      <Link to={`/edit/${postInfo._id}`} className={styles["edit-btn"]} ><FontAwesomeIcon icon={faPenToSquare} bounce />Edit</Link>
       </div>
     )}
     <img className={styles["post-img"]} src={`http://localhost:4000/${postInfo.cover}`} alt="" />

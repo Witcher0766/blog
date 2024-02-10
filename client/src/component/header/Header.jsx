@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import styles from './Header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Header = () => {
   const {setUserInfo, userInfo} = useContext(UserContext);
@@ -27,12 +29,15 @@ const Header = () => {
       if (response.ok) {
         setUserInfo(null);
         navigate('/login');
+        toast.success("Logout successful");
       } else {
-        console.error('Logout failed:', response.status, response.statusText);
+        // console.error('Logout failed:', response.status, response.statusText);
+        toast.error("logout failed");
       }
     })
     .catch(error => {
-      console.error('Fetch error during logout:', error);
+      toast.error('Fetch error during logout:');
+      // console.error('Fetch error during logout:', error);
     });
   }
 
