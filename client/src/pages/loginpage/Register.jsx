@@ -3,6 +3,8 @@ import styles from './LoginPage.module.css'
 import Card from '../../component/card/Card'
 import { Link } from 'react-router-dom'
 import registerImg from "../../assets/register.gif";
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Register = () => {
@@ -20,13 +22,12 @@ const Register = () => {
       });
   
       if (response.status === 200) {
-        alert("Registration successful");
+        toast.success("Registration successful");
       } else {
-        alert("Registration failed");
+        toast.error("Registration failed");
       }
     } catch (error) {
-      console.error("Error during registration:", error);
-      alert("Registration failed. Please try again later.");
+      toast.error("Registration failed. Please try again later.")
     }
   }
   

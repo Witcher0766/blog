@@ -36,24 +36,23 @@
 .edit-post {
     width: 100%;
     display: flex;
-    justify-content: center;
-    padding: 5px 0px 5px 0px;
+    justify-content: flex-end;
+    padding: 10px;
 }
 
 .edit-btn {
     border: none;
     color: white;
-    background-color: black;
+    background-color: #1abc9c;
     cursor: pointer;
     transition: all 0.3s;
     text-decoration: none;
     padding: 10px;
-    display: flex;
-    width: 10%;
-    justify-content: center;
+    border: none;
+    border-radius: 5px;
 }
 
 .edit-btn:hover {
-    background-color: #433f3f;
+    background-color: #16a085;
     color: whitesmoke;
 }

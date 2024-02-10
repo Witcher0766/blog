@@ -4,6 +4,8 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Card from '../../component/card/Card'
 import loginImg from "../../assets/login.gif";
 import { UserContext } from '../../context/UserContext';
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const LoginPage = () => {
@@ -26,13 +28,15 @@ const LoginPage = () => {
         response.json().then(userInfo => {
           setUserInfo(userInfo);
           navigate("/");
+          toast.success("Login successful");
         })
       } else {
-        alert("login failed");
+        toast.error("login failed");
       }
     } catch (error) {
       console.log("Error during login",error);
-      alert("login failed..!! Please try again later");
+      // alert("login failed..!! Please try again later");
+      toast.error("login failed..!! Please try again later");
     }
   }
 
@@ -45,7 +49,6 @@ const LoginPage = () => {
       <div className={styles.form}>
         <h2>Login</h2>
         <form onSubmit={login}>
-       
           <input
             type="email"
             placeholder="Email"
