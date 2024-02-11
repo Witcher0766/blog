@@ -4,7 +4,9 @@ import styles from './Postpage.module.css';
 import {formatISO9075} from "date-fns";
 import { UserContext } from '../../context/UserContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faPenToSquare, faTrash } from '@fortawesome/free-solid-svg-icons'
+import {toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Postpage = () => {
   const {id} = useParams();
@@ -19,6 +21,25 @@ const Postpage = () => {
     })
   }, []);
 
+
+  const handleDelete = async () => {
+    try {
+      const response = await fetch(`http://localhost:4000/post/${id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      })
+      if(response.ok) {
+        toast.success("Your post is deleted successfully..!");
+      }
+      else {
+        toast.error("Post can't be deleted");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
   if(!postInfo) return '';
   return (
     <div className={styles["main-container"]}>
@@ -29,7 +50,8 @@ const Postpage = () => {
     </div>
     {userInfo.id === postInfo.author._id && (
       <div className={styles["edit-post"]}> 
-      <Link to={`/edit/${postInfo._id}`} className={styles["edit-btn"]} ><FontAwesomeIcon icon={faPenToSquare} bounce />Edit</Link>
+      <Link to={`/edit/${postInfo._id}`} className={styles["edit-btn"]} ><FontAwesomeIcon icon={faPenToSquare} bounce /></Link>
+      <Link to={'/'} className={styles["delete-btn"]} onClick={handleDelete}><FontAwesomeIcon icon={faTrash} bounce /></Link>
       </div>
     )}
     <img className={styles["post-img"]} src={`http://localhost:4000/${postInfo.cover}`} alt="" />
