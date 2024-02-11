@@ -38,6 +38,7 @@
     display: flex;
     justify-content: flex-end;
     padding: 10px;
+    gap: 0.5rem;
 }
 
 .edit-btn {
@@ -54,5 +55,23 @@
 
 .edit-btn:hover {
     background-color: #16a085;
+    color: whitesmoke;
+}
+
+
+.delete-btn {
+    border: none;
+    color: white;
+    background-color: #ff7675;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete-btn:hover {
+    background-color: #d63031;
     color: whitesmoke;
 }

@@ -6,6 +6,10 @@ import loginImg from "../../assets/login.gif";
 import { UserContext } from '../../context/UserContext';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 
 const LoginPage = () => {
@@ -69,8 +73,23 @@ const LoginPage = () => {
           <div className={styles.links}>
             <Link to="/reset">Reset Password</Link>
           </div>
-          <p>-- or --</p>
+          {/* <p>-- or --</p> */}
         </form>
+      <div className={styles["accordion"]}>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          Demo Login (Username, Password)
+        </AccordionSummary>
+        <AccordionDetails>
+        <p>Username: test2@gmail.com</p>
+        <p>Password: test2</p>
+        </AccordionDetails>
+      </Accordion>
+    </div>
         <span className={styles.register}>
           <p>Don't have an account? </p>
           <Link to="/register">Register</Link>

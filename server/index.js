@@ -59,8 +59,6 @@ app.post('/login', async (req, res) => {
     }
 });
 
-
-
 app.get('/profile', (req, res) => {
     const {token} = req.cookies;
     jwt.verify(token, secret, {}, (err, info) => {
@@ -154,6 +152,21 @@ app.get('/post/:id', async (req, res) => {
     const {id} = req.params;
     const postDoc = await Post.findById(id).populate('author', ['username']);
     res.json(postDoc)
+})
+
+app.delete('/post/:id', async (req, res) => {
+    const {id} = req.params;
+    try {
+        const deletedPost = await Post.findByIdAndDelete(id);
+        if (deletedPost) {
+          res.json({ success: true, message: 'Post deleted' });
+        } else {
+          res.status(404).json({ success: false, message: 'Post not found' });
+        }
+      } catch (error) {
+        console.error('Error deleting post:', error);
+        res.status(500).json({ success: false, message: 'Unable to delete post' });
+      }
 })
 
 
