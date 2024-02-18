@@ -34,7 +34,7 @@ const IndexPage = () => {
 
   return (
     <>
-     <div className='px-10'>
+     <div className='px-0 md:px-10'>
      {posts.map(post => (
         <Post key={post._id} {...post} />
       ))}
