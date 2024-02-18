@@ -34,9 +34,11 @@ const IndexPage = () => {
 
   return (
     <>
-      {posts.map(post => (
+     <div className='px-10'>
+     {posts.map(post => (
         <Post key={post._id} {...post} />
       ))}
+     </div>
     </>
   );
 };

@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from './Header.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/UserContext'
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Box from '../box/Box';
 
 const Header = () => {
   const {setUserInfo, userInfo} = useContext(UserContext);
@@ -51,13 +52,13 @@ const Header = () => {
   return (
     <>
         <header>
-        <Link to="/" className={styles["logo"]} >MyBlog</Link>
+        <Link to="/" className='font-extrabold font-serif text-2xl' >Bol<span className='text-sky-400'>ger</span></Link>
         <nav>
         {username && (
           <>
             <Link className={styles["link-btn"]} to="/create">Create</Link>
             <button className='btn-1' onClick={logout}>Logout</button>
-            <p to="/create">{firstLetter}</p>
+            <p className='w-1/2 h-1/2 border-' to="/create">{firstLetter}</p>
           </>
         )}
         {!username && (
@@ -68,6 +69,7 @@ const Header = () => {
         )}
         </nav>
       </header>
+    <Box/>
     </>
   )
 }

@@ -13,7 +13,7 @@ body {
 
 
 main {
-    padding: 10px;
+    padding: 10px 10px 0px 10px;
     max-width: 1100px;
     margin: 0 auto;
 }
@@ -48,4 +48,17 @@ main {
 
 .btn-1:hover {
     background-color: #c0392b;
+}
+
+
+
+.link-footer a {
+    color: grey;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.link-footer a:hover {
+    color: black;
 }
