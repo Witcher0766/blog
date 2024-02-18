@@ -52,7 +52,7 @@ const Header = () => {
   return (
     <>
         <header>
-        <Link to="/" className='font-extrabold font-serif text-2xl' >Bol<span className='text-sky-400'>ger</span></Link>
+        <Link to="/" className='font-extrabold font-serif text-2xl md:text-3xl lg:text-4xl' >Bol<span className='text-sky-400'>ger</span></Link>
         <nav>
         {username && (
           <>

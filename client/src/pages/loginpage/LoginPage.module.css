@@ -80,17 +80,27 @@
       flex-direction: column;
     }
   }
-  
-  
-  @media screen and (max-width: 571px) {
+
+  @media screen and (max-width: 804px) {
+
+    .auth .img {
+      width: 60%;
+    }
+
+    .auth .img img {
+      width: 100%;
+    }
     .auth .form {
-      width: 25rem;
+      width: 100%;
     }
   }
+  
+  
+
   @media screen and (max-width: 416px) {
-    .auth .form {
+    /* .auth .form {
       width: 20rem;
-    }
+    } */
   
     .auth .img {
       width: 20rem;
