@@ -12,7 +12,7 @@ const Header = () => {
 
 
   useEffect(() => {
-    fetch('http://localhost:4000/profile', {
+    fetch(`${process.env.REACT_APP_SERVER_URL}profile`, {
       credentials: 'include',
     }).then((response) => {
       response.json().then(userInfo => {
@@ -22,7 +22,7 @@ const Header = () => {
   }, []);
 
   function logout() {
-    fetch('http://localhost:4000/logout', {
+    fetch(`${process.env.REACT_APP_SERVER_URL}logout`, {
       credentials: 'include',
       method: 'POST',
     })
@@ -32,13 +32,11 @@ const Header = () => {
         navigate('/login');
         toast.success("Logout successful");
       } else {
-        // console.error('Logout failed:', response.status, response.statusText);
         toast.error("logout failed");
       }
     })
     .catch(error => {
       toast.error('Fetch error during logout:');
-      // console.error('Fetch error during logout:', error);
     });
   }
 

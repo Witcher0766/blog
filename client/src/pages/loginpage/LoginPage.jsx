@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import styles from './LoginPage.module.css'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Card from '../../component/card/Card'
 import loginImg from "../../assets/login.gif";
 import { UserContext } from '../../context/UserContext';
@@ -22,7 +22,7 @@ const LoginPage = () => {
   async function login(e) {
     try {
       e.preventDefault();
-      const response = await fetch('http://localhost:4000/login', {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}login`, {
         method: 'POST',
         body: JSON.stringify({username, password}),
         headers: { 'Content-Type': 'application/json'},
@@ -39,7 +39,6 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.log("Error during login",error);
-      // alert("login failed..!! Please try again later");
       toast.error("login failed..!! Please try again later");
     }
   }
@@ -73,7 +72,6 @@ const LoginPage = () => {
           <div className={styles.links}>
             <Link to="/reset">Reset Password</Link>
           </div>
-          {/* <p>-- or --</p> */}
         </form>
       <div className={styles["accordion"]}>
       <Accordion>

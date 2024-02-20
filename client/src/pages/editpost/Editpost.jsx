@@ -4,7 +4,6 @@ import styles from './Editpost.module.css';
 import ReactQuill from 'react-quill';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Button from '@mui/material/Button';
 
 
 const Editpost = () => {
@@ -17,7 +16,7 @@ const Editpost = () => {
   const [files, setFiles] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:4000/post/'+id)
+    fetch(`${process.env.REACT_APP_SERVER_URL}post/${id}`)
     .then(response => {
       response.json().then(postInfo => {
         setTitle(postInfo.title);
@@ -37,7 +36,7 @@ const Editpost = () => {
   if (files?.[0]) {
       data.set('file', files?.[0]);
   }
-   const response = await fetch('http://localhost:4000/post', {
+   const response = await fetch(`${process.env.REACT_APP_SERVER_URL}post`, {
                 method: 'PUT',
                 body: data,
                 credentials: 'include',
@@ -81,7 +80,6 @@ const Editpost = () => {
             onChange={setContent} 
             />
             <button className='btn'>Update post</button>
-            {/* <Button variant="contained" color="success">Update post</Button> */}
         </form>
         </div>
     </>
