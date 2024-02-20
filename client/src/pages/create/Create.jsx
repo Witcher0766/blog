@@ -27,7 +27,7 @@ const Create = () => {
                 data.set('file', files[0]);
             }
             e.preventDefault();
-            const response = await fetch('http://localhost:4000/post', {
+            const response = await fetch(`${process.env.REACT_APP_SERVER_URL}post`, {
                 method: 'POST',
                 body: data,
                 credentials: 'include',
@@ -37,7 +37,6 @@ const Create = () => {
                 toast.success("Post created");
             } else {
                 toast.error("Failed to create post");
-                // console.error('Failed to create post:', response.status, response.statusText);
             }
         } catch (error) {
             console.error('Error during fetch:', error.message);

@@ -13,7 +13,7 @@ const Postpage = () => {
   const {userInfo} = useContext(UserContext);
   const [postInfo, setPostInfo] = useState(null);
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`)
+    fetch(`${process.env.REACT_APP_SERVER_URL}post/${id}`)
     .then(response => {
       response.json().then(postInfo => {
         setPostInfo(postInfo);
@@ -24,7 +24,7 @@ const Postpage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/post/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}post/${id}`, {
         method: 'DELETE',
         credentials: 'include',
       })
@@ -54,7 +54,7 @@ const Postpage = () => {
       <Link to={'/'} className={styles["delete-btn"]} onClick={handleDelete}><FontAwesomeIcon icon={faTrash} bounce /></Link>
       </div>
     )}
-    <img className={styles["post-img"]} src={`http://localhost:4000/${postInfo.cover}`} alt="" />
+    <img className={styles["post-img"]} src={`${process.env.REACT_APP_SERVER_URL}${postInfo.cover}`} alt="" />
     <div className={styles["main-content"]} dangerouslySetInnerHTML={{__html:postInfo.content}} />
     </div>
   )

@@ -7,7 +7,7 @@ const IndexPage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:4000/post')
+    fetch(`${process.env.REACT_APP_SERVER_URL}post`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
